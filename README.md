@@ -4,4 +4,4 @@
 Этот репозиторий является каркасом для будущего веб-приложения.
 
 ## Ссылки 
-- [Публичная страница на GitHub Pages] (https://Rithmer.github.io/firststep/)
+- [Публичная страница на GitHub Pages] (https://rithmer.github.io/my-education-project/)
