@@ -1,43 +1,134 @@
-<!DOCTYPE html> 
-<html lang="ru"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Контакты - Firstep</title> 
-    <meta name="description" content="Связаться с нами"> 
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> 
-    <meta property="og:type" content="website"> 
-    <meta property="og:title" content="Контакты - Firstep"> 
-    <meta property="og:description" content="Связаться с нами"> 
-    <meta property="og:image" content="assets/site-preview.png">
-</head> 
-<body> 
-    <header> 
-        <a href="/">Firstep</a> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Главная</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contacts.html">Контакты</a></li> 
-            </ul> 
-        </nav> 
-    </header>  
-    <main> 
-        <nav aria-label="Хлебные крошки"> 
-            <a href="index.html">Главная</a> → 
-            <span>Контакты</span> 
-        </nav> 
-        <h1>Связаться с нами</h1> 
-        <section> 
-            <a href="https://t.me/#">Telegram</a>
-        </section> 
-        <section> 
-            <a href="https://github.com/Rithmer">Github</a>
-        </section> 
-    </main> 
-    <footer> 
-        <p>&copy; 2023 Firstep. Все права защищены.</p> 
-        <p>Телефон: +7 (123) 456-78-90</p> 
-    </footer> 
-</body> 
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты - Firstep</title>
+    <meta name="description" content="Связаться с нами" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Контакты - Firstep" />
+    <meta property="og:description" content="Связаться с нами" />
+    <meta property="og:image" content="assets/site-preview.png" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="/">Firstep</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <nav aria-label="Хлебные крошки">
+        <a href="index.html">Главная</a> →
+        <span>Контакты</span>
+      </nav>
+      <h1>Связаться с нами</h1>
+      <section>
+        <a href="https://t.me/#">Telegram</a>
+      </section>
+      <section>
+        <a href="https://github.com/Rithmer">Github</a>
+      </section>
+      <section>
+        <button id="openDialog" type="button">Написать нам</button>
+        <dialog id="contactDialog" aria-labelledby="dialogTitle">
+          <h2 id="dialogTitle">Обратная связь</h2>
+          <form id="contactForm" method="dialog" novalidate>
+            <label for="name">Имя</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              minlength="2"
+              autocomplete="given-name"
+              aria-describedby="nameHelp"
+              aria-invalid="false"
+              placeholder="Vi"
+            />
+            <small id="nameHelp">Введите не менее 2 символов</small>
+            <label for="email">E-mail</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              aria-describedby="emailHelp"
+              aria-invalid="false"
+              placeholder="name@example.com"
+            />
+            <small id="emailHelp">Пример: name@example.com</small>
+            <label for="phone">Телефон</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              aria-describedby="phoneHelp"
+              aria-invalid="false"
+              placeholder="+79991234567"
+              required
+              pattern="^\+7\d{10}$"
+            />
+            <small id="phoneHelp"
+              >Введите номер слитно, например +79991234567</small
+            >
+            <label for="date">Дата</label>
+            <input
+              id="date"
+              name="date"
+              type="date"
+              required
+              aria-describedby="dateHelp"
+              aria-invalid="false"
+            />
+            <small id="dateHelp">Выберите дату рождения</small>
+            <label for="topic">Тема</label>
+            <select
+              id="topic"
+              name="topic"
+              required
+              aria-describedby="topicHelp"
+              aria-invalid="false"
+            >
+              <option value="">Выберите тему</option>
+              <option>Вопрос</option>
+              <option>Заказ</option>
+            </select>
+            <small id="topicHelp">Укажите причину обращения</small>
+            <label for="message">Сообщение</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              maxlength="100"
+              aria-describedby="messageHelp"
+              aria-invalid="false"
+            >
+            </textarea>
+            <small id="messageHelp">Опишите ваш запрос</small>
+            <div class="form-actions">
+              <button type="button" id="closeDialog">Закрыть</button>
+              <button type="submit">Отправить</button>
+            </div>
+          </form>
+        </dialog>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Firstep. Все права защищены.</p>
+      <p>Телефон: +7 (123) 456-78-90</p>
+    </footer>
+  </body>
 </html>
