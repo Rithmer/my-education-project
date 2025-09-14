@@ -3,6 +3,7 @@
   --color-bg: #fff;
   --color-fg: #0b0b0b;
   --color-fg-lighter: #ede5e5bb;
+  --color-fg-hero: #1a1a1a;
   --color-muted: #666;
   --color-border-gray: #c8c8c8;
   --color-primary: #0a84ff;
@@ -32,6 +33,7 @@ html {
 body.theme-dark {
   --color-bg: #121212; /* Глубокий фон */
   --color-fg: #eaeaea; /* Текст */
+  --color-fg-hero: #fff; 
   --color-fg-lighter: #2a2a2a; /* Светлые блоки */
   --color-muted: #888; /* Вторичный текст */
   --color-border-gray: #333; /* Границы */
@@ -45,6 +47,18 @@ body {
   font-family: var(--font-body);
   line-height: 1.5;
 }
+
+/* Герой-секция: затемняющий градиент поверх фонового изображения */
+.hero { 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),/* оверлей для контраста текста */
+   url("/assets/background-hero-image.jpg") center/cover /* картинка как декор */
+      no-repeat; 
+  color: var(--color-fg-hero);
+  text-shadow: var(--shadow);
+  padding: clamp(2rem, 6vw, 6rem) 1rem; /* адаптивные отступы */
+  border-radius: var(--radius);
+}
+
 /* Формы: размеры, отступы, визуальный порядок */
 label {
   display: block;
@@ -61,7 +75,6 @@ button {
   border-radius: 8px;
   background-color: var(--color-fg-lighter);
   color: inherit;
-
 }
 
 dialog {
@@ -158,7 +171,6 @@ button,
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
-
 
 button:hover {
   filter: brightness(0.95);
