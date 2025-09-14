@@ -1,13 +1,183 @@
+:root {
+  /* Палитра */
+  --color-bg: #fff;
+  --color-fg: #0b0b0b;
+  --color-fg-lighter: #ede5e5bb;
+  --color-muted: #666;
+  --color-border-gray: #c8c8c8;
+  --color-primary: #0a84ff;
+  --color-danger: #b00020;
+  /* Типографика и размеры */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-size-normal: 16px;
+  --font-size-medium: 24px;
+  --font-size-big: 32px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  /* Скругления и тени */
+  --radius: 12px;
+  --radius-round: 50%;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Плавная прокрутка к #якорю */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Тёмная тема: переопределяем только значения токенов */
+body.theme-dark {
+  --color-bg: #121212; /* Глубокий фон */
+  --color-fg: #eaeaea; /* Текст */
+  --color-fg-lighter: #2a2a2a; /* Светлые блоки */
+  --color-muted: #888; /* Вторичный текст */
+  --color-border-gray: #333; /* Границы */
+  --color-primary: #6aa2ff; /* Акцент */
+  --color-danger: #ff5c5c; /* Ошибки */
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+/* Формы: размеры, отступы, визуальный порядок */
+label {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+}
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  max-width: 480px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border-gray);
+  border-radius: 8px;
+  background-color: var(--color-fg-lighter);
+  color: inherit;
+
+}
+
 dialog {
   padding: 1.25rem;
   border: none;
   border-radius: 12px;
+  background: var(--color-bg);
+  color: var(--color-fg);
 }
+
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
+
 .form-actions {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+/* Центровка и ограничение ширины контейнера */
+.container {
+  width: min(100% - 2 * var(--space-4), 1120px);
+  margin-inline: auto;
+}
+
+/* Вертикальные отступы секций по токенам */
+.section {
+  padding-block: var(--space-5);
+}
+
+.section__title {
+  margin: 0 0 var(--space-3);
+}
+
+.site-nav__link {
+  color: var(--color-fg);
+}
+
+/* Изображение в карточке заполняет блок и не искажает пропорции */
+.card__img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
+  object-position: center; /* аккуратное кадрирование */
+  border-radius: var(--radius-round);
+  display: block;
+}
+
+/* Контейнер с фиксированным соотношением сторон для <iframe>/<video> */
+.media {
+  aspect-ratio: 16/9; /* удерживаем пропорцию блока */
+  width: min(100%, 960px); /* не шире 960px, но адаптивен */
+  margin-inline: auto; /* центрируем блок */
+}
+
+/* медиа занимает всю площадь контейнера */
+.media iframe,
+.media video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+.theme-toggle {
+  width: fit-content;
+  color: unset;
+  background-color: unset;
+  align-self: flex-start;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* инвертирует цвет */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Кнопка по умолчанию */
+button,
+[type="submit"] {
+  background: var(--color-primary);
+  color: var(--color-fg);
+  border: none;
+  cursor: pointer;
+}
+/* Состояния: клавиатура/мышь/ошибки */
+:where(input, select, textarea, button):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+button:hover {
+  filter: brightness(0.95);
+}
+
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-muted);
+}
+
+/* Подсветка ошибочных полей */
+[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+/* Подсветка цели */
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
 }
