@@ -51,7 +51,7 @@ body {
 /* Герой-секция: затемняющий градиент поверх фонового изображения */
 .hero { 
   background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),/* оверлей для контраста текста */
-   url("/assets/background-hero-image.jpg") center/cover /* картинка как декор */
+   url("./assets/background-hero-image.jpg") center/cover /* картинка как декор */
       no-repeat; 
   color: var(--color-fg-hero);
   text-shadow: var(--shadow);
